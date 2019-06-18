@@ -30,6 +30,13 @@ class Product {
      */
     protected $locationData;
 
+    /**
+     * cache folder location pathe
+     *
+     * @var string
+     */
+    protected $cache_path = 'cache/';
+
 
     public function __construct ( $productData, $stockData, $locationData ) {
         $this->productData = $productData;
@@ -46,7 +53,7 @@ class Product {
     public function run( $refresh = FALSE){
 
         /* refresh cached data ? and  check is cached file exist ? */
-        $productDetail = $this->readCache('products.cache');
+        $productDetail = $this->readCache( $this->cache_path . 'products.cache');
         if(!$refresh &&  $productDetail){
             echo  $productDetail;
         }else{
@@ -110,7 +117,7 @@ class Product {
         
         try{
             /* create cache file */
-            $filename = 'products.cache';
+            $filename =  $this->cache_path . 'products.cache';
             $filew = fopen( $filename, 'w');
             fwrite($filew, json_encode($data) );
             fclose($filew);
