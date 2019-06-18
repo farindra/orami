@@ -1,0 +1,12 @@
+[
+
+  {
+      "locationId":1,
+      "locationName":"Location 1"
+  },
+  {
+      "locationId":2,
+      "locationName":"Location 2"
+  }
+
+]
